@@ -1,0 +1,84 @@
+<!-- Renu Nishitha Salver G00941178 -->
+<!-- This page displays the required data from the database and also deletes the required data -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	     xmlns:p="http://primefaces.org/ui">
+	
+
+<h:head>
+</h:head>
+
+<h:body>
+<h:form>
+<h:dataTable value="#{sbean.studList}" var="stud" border="1">
+<h:column>
+<h:commandButton value="Delete" actionListener="#{sbean.delRows(stud.sid)}" ajax="true" event="click" update="data" >
+
+<f:ajax update="data"></f:ajax>
+</h:commandButton>
+</h:column>
+<h:column>
+<f:facet name="header"> First name</f:facet>
+ "#{stud.fname}"
+</h:column>
+<h:column>
+<f:facet name="header"> Last name</f:facet>
+#{stud.lname}
+</h:column>
+<h:column>
+<f:facet name="header"> Street Address</f:facet>
+#{stud.saddress}
+</h:column>
+<h:column>
+<f:facet name="header"> City</f:facet>
+#{stud.city}
+</h:column>
+<h:column>
+<f:facet name="header"> State</f:facet>
+#{stud.state}
+</h:column>
+<h:column>
+<f:facet name="header"> Zipcode</f:facet>
+#{stud.zip}
+</h:column>
+<h:column>
+<f:facet name="header"> Tel No</f:facet>
+#{stud.tphn}
+</h:column>
+<h:column>
+<f:facet name="header"> Email id</f:facet>
+#{stud.email}
+</h:column>
+<h:column>
+<f:facet name="header"> Source of Information</f:facet>
+#{stud.radiob}
+</h:column>
+<h:column>
+<f:facet name="header"> Raffles</f:facet>
+#{stud.raffleT}
+</h:column>
+<h:column>
+<f:facet name="header"> Mean</f:facet>
+#{stud.mean}
+</h:column>
+<h:column>
+<f:facet name="header"> Deviation</f:facet>
+#{stud.deviation}
+</h:column>
+<h:column>
+<f:facet name="header"> What-Liked</f:facet>
+<h:dataTable value="#{stud.chekbox}" var="chekbox" border="1">
+<h:column>#{chekbox}</h:column>
+</h:dataTable>
+</h:column>
+</h:dataTable>
+<h1>To view the updated List Click the below link</h1>
+<h:outputLink value="ListSurvey.xhtml">Updated List</h:outputLink>
+</h:form>
+</h:body>
+</html>

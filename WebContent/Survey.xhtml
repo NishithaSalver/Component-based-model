@@ -1,0 +1,112 @@
+<!-- Renu Nishitha Salver G00941178 -->
+<!--This page displays survey form  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+ <style type = "text/css"> 	
+         	 body {
+ 	 	background-image: url("images/Background4.jpg");
+    	background-repeat: repeat;}
+    	</style>
+</h:head>	
+<h:body>
+<h:form method = "post">
+<p:panelGrid columns="1"><!-- Aligns form data in single column -->
+
+<h1>Enter the following details without leaving any blank fields</h1>
+<h:outputLabel for="FirstName" value="FirstName"/>
+<p:inputText id="FirstName"  value="#{survey.stud.fname}" required="true" requiredMessage="FirstName field is mandatory" validatorMessage="Enter only alphabetical text">
+<f:validateLength maximum="15"/>
+<f:validateRegex pattern="^[a-zA-Z]+$" />
+</p:inputText>
+<p:message for="FirstName" style="color:red"/>
+<h:outputLabel for="LastName" value="LastName"/>
+<p:inputText id="LastName"  value="#{survey.stud.lname}" required="true" requiredMessage="LastName field is mandatory" validatorMessage="Enter only aplhabetical text">
+<f:validateLength maximum="15"/>
+<f:validateRegex pattern="^[a-zA-Z]+$" />
+</p:inputText>
+<p:message for="LastName"  style="color:red"/>
+<h:outputLabel for="SAddress"  value="StreetAdress" />
+<p:inputText id="SAddress"   value="#{survey.stud.saddress}" required="true" requiredMessage="Street Address  is mandatory" validatorMessage="Enter only aplhanumeric text or special characters like '-' '/'">
+<f:validateLength  maximum="30"/>
+<f:validateRegex pattern="^[a-zA-Z0-9\\\-]+$"/>
+</p:inputText>
+<p:message for="SAddress"   style="color:red"/>
+<h:outputLabel  for="city" value="City" />
+<p:inputText  id="city" value="#{survey.stud.city}"  required="true"  requiredMessage="Enter the City"   validatorMessage = "Enter only alphabets and numbers and should be less than or equal to 30 characters.">
+<f:validateLength maximum="30"/></p:inputText>
+<h:message for= "city"  />
+<h:outputLabel  for="state" value="State" />
+<p:inputText  id="state"   value="#{survey.stud.state}"     required="true"    requiredMessage="Enter the State"  validatorMessage = "Enter only alphabets and numbers and should be less than or equal to 30 characters.">
+<f:validateLength maximum="30"/></p:inputText>
+<h:message for= "state" />
+<h:outputLabel  for="zip" value="Zip" />
+<p:inputText  id="zip"   value="#{survey.stud.zip}"  required="true" requiredMessage="Enter the Zip Code"   validatorMessage = "Zip code must be number and within the predefined set and exactly 5 digits">
+<f:ajax listener="#{survey.displayAll}" execute="#{zip}" event="keyup" render="city state"/>
+ <f:validateLength minimum="5" maximum="5"/></p:inputText>
+ <h:message for= "zip" style="color:red"/>
+<h:outputLabel for="Email" value="Email"/>
+<p:inputText id="Email" value="#{survey.stud.email}"   required="true"  requiredMessage="Email field is mandatory" validatorMessage="Enter valid email id">
+<f:validateRegex pattern="^[_a-zA-z0-9]+(\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+.[\.a-zA-z]+[\.a-zA-z]*"/>
+</p:inputText>
+<p:message for="Email"  style="color:red"/>
+<h:outputLabel for="TPhn" value="Telephone Number"/>
+<p:inputMask mask="(999) 999-9999"  value="#{survey.stud.tphn}"  required="true" id="TPhn" requiredMessage="This field is mandatory and only digits should be entered"/>
+<p:message for="TPhn" class="error" />
+<h:outputLabel value="Date of Survey : "/>
+<p:calendar id="sdate" required="true"  value="#{survey.stud.sdate}"  binding="#{date1input}"  requiredMessage="You must enter the Date of Survey" />
+<p:message for="sdate" style="color:red"/>
+<h:outputLabel value="Semester Start Date : "/>
+<p:calendar id="semdate" value="#{survey.stud.semdate}"  validator="#{survey.dateAfter}">
+ <f:attribute name="dateOfSurvey" value="#{date1input}"></f:attribute>
+</p:calendar>
+<p:message for="semdate" style="color:red"/>
+<h1>Please enter what you like the most about the college</h1>
+<!-- Checkboxes are created -->
+ <h:selectManyCheckbox id="Chekbox"  value="#{survey.stud.chekbox}" layout="pageDirection" >
+        <f:selectItem id="item1" itemLabel="Location" itemValue="1"   />
+        <f:selectItem id="item2" itemLabel="Campus" itemValue="2" />
+        <f:selectItem id="item3" itemLabel="Atmosphere" itemValue="3" />
+        <f:selectItem id="item4" itemLabel="Campus" itemValue="4" />
+        <f:selectItem id="item5" itemLabel="Sports" itemValue="5" />
+        <f:selectItem id="item6" itemLabel="Dorm-Rooms" itemValue="6" />
+    </h:selectManyCheckbox>
+      <h1>Tell us how you've become interested in the college</h1>
+    <!-- RadioButtons are created -->
+<h:selectOneRadio id="Radiob" value="#{survey.stud.radiob}" layout="pageDirection" >
+   <f:selectItem itemValue="1" itemLabel="Internet" />
+   <f:selectItem itemValue="2" itemLabel="Television" />	
+    <f:selectItem itemValue="3" itemLabel="Friends" />	   			
+    <f:selectItem itemValue="4" itemLabel="Other" />	   	      			
+</h:selectOneRadio>	 
+<!-- DropDown list is created -->
+<h1>Tell us how likely you would suggest about the college to your friends</h1>
+<h2>The Choice can be "Likely,VeryLikely,Unlikely"</h2>
+<h3>Choice to be taken from the above list only</h3>
+<p:autoComplete value="#{survey.stud.dropd}" completeMethod="#{survey.display}" forceSelection="true" minQueryLength="1"/>
+ <h2>Raffle Ticket</h2>
+<h3><b><i> Follow the instructions while filling the raffle ticket</i></b></h3>
+Enter any ten digits of your choice,this will be your Raffle Ticket number.
+This information will be used to announce whether the student wins a free movie ticket.	
+<h:outputLabel for="RaffleTicket" value="Raffle Ticket"/>
+<p:inputText id="RaffleTicket"  value="#{survey.stud.raffleT}" required="true" requiredMessage="This field is mandatory" validatorMessage="Enter only digits">
+<f:validateRegex pattern="^[0-9\,]+$" />
+</p:inputText>
+<p:message for="RaffleTicket" style="color:red"/>
+<h1>For any additional feedback type your comments here  </h1>
+<p:inputTextarea value="#{survey.stud.comments}" rows="15" cols="80">
+Please type your comments here
+</p:inputTextarea>
+<h:commandButton action="#{survey.submitAction}" value="submit"/>
+<h:commandButton action="#{survey.cancelAction}"  value="cancel"/>
+</p:panelGrid>
+</h:form>
+</h:body>
+</html>

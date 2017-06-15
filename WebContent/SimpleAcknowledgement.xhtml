@@ -1,0 +1,20 @@
+<!-- Renu Nishitha Salver G00941178 -->
+<!--This page navigates to home.xhtml upon clicking on the link given below  -->
+<!-- This page displays the mean and standard deviation of the raffle ticket -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+<h1>Thank you for completing the form</h1>
+<ul>
+<li>Mean::#{survey.wr.mean} </li>
+<li>Standard Deviation::#{survey.wr.deviation}</li>
+<h:outputLink value="home.xhtml">Home</h:outputLink><!-- link to the home page -->
+</ul>
+</h:body>
+</html>

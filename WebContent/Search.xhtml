@@ -1,0 +1,37 @@
+<!-- Renu Nishitha Salver G00941178 -->
+<!-- This page is used to perform the search operation on the student database -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+<h:form >
+<p:panelGrid columns="1"><!-- Aligns form data in single column -->
+<h:outputLabel  for="firstname" value="FirstName"/>
+<p:inputText id="firstname" value="#{sbean.fname}" requiredMessage="Please enter your firstname" validatorMessage="Enter only alphabetical text" >
+<f:validateLength maximum="15" />
+</p:inputText>
+<p:message for="firstname" class="error" />
+<h:outputLabel  for="lastname" value="Last Name"/>
+<p:inputText id="lastname" value="#{sbean.lname}" 	requiredMessage="Please enter your Lastname" validatorMessage="Enter only alphabetical text">
+</p:inputText>
+<p:message for="lastname" class="error" />
+<h:outputLabel for="city" value="City"/>
+<p:inputText id="city" value="#{sbean.city}" requiredMessage="Please enter your city" validatorMessage="Enter only alphabetical text">
+</p:inputText>
+<p:message for="city" class="error" />
+<h:outputLabel value="State"/>
+<p:inputText  for="state" id="state" value="#{sbean.state}" requiredMessage="Please enter your state" validatorMessage="Enter only alphabetical text">
+</p:inputText>
+<p:message for="state" class="error" />
+<h:commandButton value="Search" action="#{sbean.searchStudSurvey}" />
+</p:panelGrid>
+</h:form>
+</h:body>
+</html>

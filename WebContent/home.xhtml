@@ -1,0 +1,69 @@
+<!-- Renu Nishitha Salver G00941178 -->
+<!--This page navigates to Survey.xhtml, ListSurvey.xhtml and Search.xhtml upon clicking on the links given below  -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	 xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+ <title> Welcome </title>
+    <style type = "text/css">
+
+    li { font-family: "Times New Roman", Times, serif;
+ 		font-size: 20px;
+   }
+
+    .welcome { font-family: "Monotype Corsiva","Times New Roman", Times, serif;
+ 	   font-size: 90px;
+ 	   text-shadow: -6px 5px 6px grey;
+ 	   font-weight: bold;
+ 	   font-style: italic;  
+ 	   color: #101010}
+
+ 	.nisha{ font-family: "Monotype Corsiva","Times New Roman", Times, serif;
+ 	   font-size: 30px;
+ 	   text-shadow: -4px 3px 7px grey;
+ 	   font-weight: bold;
+ 	   font-style: italic;
+ 	   position:fixed;
+ 	   right:8px;
+ 	   top:4px;
+ 	   color: #101010}
+
+ 	 h:body {
+ 	 	background-image: "bb.jpg";
+    	background-repeat: repeat;
+    	 background-color: lightblue;}
+
+ 	</style>
+
+  
+</h:head>
+<h:body>
+<p align = "center"><span class = "welcome">Welcome</span> </p>
+  	<span class = "nisha">Nishitha Salver</span>
+<h1><center>Renu Nishitha Salver</center> </h1>
+<h3><center>MS-Information Systems </center></h3>
+<h4><center> George Mason University, Fairfax, VA 22030<hr></hr>
+</center></h4>
+  	<br></br><br></br><br></br>
+<h:form>
+
+<h:panelGrid columns="1"><!-- Aligns the data in a single column -->
+
+<h3>Please click on the link to complete the student survey</h3>
+
+<h:outputLink value="Survey.xhtml">Survey</h:outputLink><!-- Link to Survey Page -->
+<h:outputLink value="ListSurvey.xhtml">ListSurvey</h:outputLink><!-- Link to Survey Page -->
+<h:outputLink value="Search.xhtml">SearchSurvey</h:outputLink><!-- Link to Survey Page -->
+
+
+</h:panelGrid>
+</h:form>
+</h:body>
+
+</html>
